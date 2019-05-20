@@ -6,7 +6,7 @@
     <h1>All articles from article s table : </h1>
     {% for article in articles %}
         <div>
-            <h2><a href="/blog/show/{{ article.title |replace({ " ": "-" }) }}">{{ loop.index }}</a>
+            <h2><a href="{{ path('blog_show', {'id':  article.id }) }}">{{ loop.index }}</a>
                 / {{ article.title }} -
                 Category : <a href="/category/{{ article.category.name }}">{{ article.category.name }}</a></h2>
             <p>{{ article.content }}</p>
