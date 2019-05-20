@@ -73,11 +73,12 @@ class BlogController extends AbstractController
         );
     }
 
+    /*
     /**
      * @Route("/category/{categoryName}", name="show_category")
      * @param string $categoryName
      * @return Response
-     */
+     *//*
     public function showByCategory(string $categoryName) : Response
     {
         $category = $this->getDoctrine()
@@ -101,6 +102,23 @@ class BlogController extends AbstractController
         return $this->render('blog/category.html.twig',
             [
                 'articles' => $articles
+            ]
+        );
+    }*/
+    /**
+     * @Route("/category/{categoryName}", name="show_category")
+     */
+    public function showByCategory(string $categoryName)
+    {
+        $category = $this ->getDoctrine()
+                          ->getRepository(Category::class)
+                          ->findOneBy(
+                            [ 'name' => $categoryName]);
+        $articles = $category->getArticles();
+        return $this->render('blog/category.html.twig',
+            [
+                'articles' => $articles,
+                'category' => $categoryName
             ]
         );
     }
