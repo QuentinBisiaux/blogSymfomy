@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Entity\Category;
 use App\Repository\ArticleRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,6 +34,7 @@ class BlogController extends AbstractController
 
     /**
      * Getting a article with a formatted slug for title
+     * @param $article
      * @Route("/blog/show/{id}",
      *     defaults={"id" = null},
      *     name="blog_show")
