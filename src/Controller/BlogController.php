@@ -34,11 +34,11 @@ class BlogController extends AbstractController
 
     /**
      * Getting a article with a formatted slug for title
-     * @param $article
+     * @param Article $article
      * @Route("/blog/show/{id}",
      *     defaults={"id" = null},
      *     name="blog_show")
-     *  @return Response A response instance
+     *@return Response A response instance
      */
     public function show(Article $article) : Response
     {
