@@ -5,6 +5,6 @@
     Un nouvel article vient d'être créé :
 
     titre : {{ article.title }}
-    lien : {{ path('article_show', {'id' : article.id}) }}
+    lien : <a href="{{ path('article_show', {'id' : article.id}) }}">Voir l'article</a>
 
 {% endblock %}
