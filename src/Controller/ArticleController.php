@@ -46,10 +46,12 @@ class ArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
+            $content = $this->renderView('article/mail/notif.html.twig', ['article' => $article]);
+
             $message = (new \Swift_Message('Un nouvel article vient d\'être publié !'))
-                ->setFrom('your_email@example.com')
-                ->setTo('your_email@example.com')
-                ->setBody('Un nouvel article vient d\'être publié sur le blog !');
+                ->setFrom('expediteur@example.com')
+                ->setTo('me@example.com')
+                ->setBody($content);
 
             $mailer->send($message);
 

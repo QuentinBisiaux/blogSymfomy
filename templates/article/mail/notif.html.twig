@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    Un nouvel article vient d'être créé :
+
+    titre : {{ article.title }}
+    lien : {{ path('article_show', {'id' : article.id}) }}
+
+{% endblock %}
