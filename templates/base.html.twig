@@ -13,8 +13,8 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse row" id="navbarNav">
+                <ul class="navbar-nav col-8">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('article_index') }}">Articles <span class="sr-only">(current)</span></a>
                     </li>
@@ -24,7 +24,18 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('tags_index') }}">Tags</a>
                     </li>
+                    <li class="nav-item">
+
+                    </li>
                 </ul>
+                <div class="nav justify-content-end col-4">
+                    {% if app.user %}
+                        <p class="text-white">Bonjour {{ app.user.email }} !</p>
+                        <a href="{{ path('app_logout') }}" class="btn btn-outline-primary my-2 my-sm-0"> Se déconnecter</a>
+                    {% else %}
+                        <a href="{{ path('app_login') }}" class="btn btn-outline-primary my-2 my-sm-0"> Se connecter</a>
+                    {% endif %}
+                </div>
             </div>
         </nav>
         <div class="container">
