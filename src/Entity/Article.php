@@ -32,7 +32,7 @@ class Article
      * @ORM\Column(type="text", unique=true)
      * @Assert\NotBlank
      * @Assert\Regex(
-     *     pattern="/(?:\W|^)(\Q$digital\E)(?:\W|$)/i",
+     *     pattern="/digitalgit /i",
      *     message="In French we don't say 'digital' but 'numérique' ! "
      * )
      */
