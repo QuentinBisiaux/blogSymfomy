@@ -72,7 +72,7 @@ class Article
 
     public function getTitle(): ?string
     {
-        return $this->title;
+        return ucfirst($this->title);
     }
 
     public function setTitle(string $title): self

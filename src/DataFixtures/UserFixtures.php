@@ -24,10 +24,11 @@ class UserFixtures extends Fixture
         $author->setRoles(['ROLE_AUTHOR']);
         $author->setPassword($this->passwordEncoder->encodePassword(
             $author,
-            'author'
-        ));
+            'author')
+        );
 
         $manager->persist($author);
+        $this->addReference('author_0', $author);
 
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();
@@ -35,10 +36,11 @@ class UserFixtures extends Fixture
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
-            'quentin'
+            'admin'
         ));
 
         $manager->persist($admin);
+        $this->addReference('author_1', $author);
 
         $manager->flush();
 

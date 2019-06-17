@@ -12,7 +12,7 @@
     {% for article in articles %}
         <div>
             <h2>
-                <a href="/blog/show/{{ article.title |replace({ " ": "-" }) }}">
+                <a href="{{ path('article_show', {'slug' : article.slug}) }}">
                     {{ loop.index }}
                 </a>
                 / {{ article.title }} -

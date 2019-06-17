@@ -31,6 +31,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article->setContent(mb_strtolower($faker->text()));
             $article->setCategory($this->getReference('categorie_'.random_int(0, 4)));
             $article->setSlug($slugifier->generate($article->getTitle()));
+            $article->setAuthor($this->getReference('author_0'));
             $manager->persist($article);
         }
 

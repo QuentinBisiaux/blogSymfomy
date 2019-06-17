@@ -64,16 +64,6 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article_show", methods={"GET"})
-     */
-    public function show(Article $article): Response
-    {
-        return $this->render('article/show.html.twig', [
-            'article' => $article,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Article $article, Slugify $slugify): Response
@@ -81,7 +71,7 @@ class ArticleController extends AbstractController
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && ($this->getUser() === $article->getAuthor() || $this->isGranted('ROLE_ADMIN'))) {
             $slug = $slugify->generate($article->getTitle());
             $article->setSlug($slug);
             $this->getDoctrine()->getManager()->flush();
