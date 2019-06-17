@@ -21,7 +21,6 @@ security:
                     - App\Security\LoginAuthenticator
             logout:
                 path:   app_logout
-            access_denied_url : /no-permission
 
     role_hierarchy:
         ROLE_AUTHOR:    ROLE_USER
