@@ -19,23 +19,35 @@
             </tr>
         </thead>
         <tbody>
-        {% for article in app.user.articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</td>
-                <td>{{ article.content }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'slug': article.slug}) }}">show</a>
-                    {% if is_granted('ROLE_AUTHOR') %}
-                        <a href="{{ path('article_edit', { 'id': article.id} ) }}">Éditer</a>
-                    {%endif%}
-                </td>
-            </tr>
+        {% if is_granted('ROLE_ADMIN') %}
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>
+                        <a href="{{ path('article_show', {'slug': article.slug}) }}">show</a>
+                        {% if is_granted('ROLE_AUTHOR') %}
+                            <a href="{{ path('article_edit', { 'id': article.id} ) }}">Éditer</a>
+                        {%endif%}
+                    </td>
+                </tr>
+            {% endfor %}
         {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for article in app.user.articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>
+                        <a href="{{ path('article_show', {'slug': article.slug}) }}">show</a>
+                        {% if is_granted('ROLE_AUTHOR') %}
+                            <a href="{{ path('article_edit', { 'id': article.id} ) }}">Éditer</a>
+                        {%endif%}
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
         </tbody>
     </table>
 {% endblock %}
