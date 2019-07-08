@@ -22,10 +22,10 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
 
-        $faker  =  Faker\Factory::create('fr_FR');
+        /*$faker  =  Faker\Factory::create('fr_FR');
         $slugifier = new Slugify();
 
-        for ($i =0; $i < 50; $i++) {
+        for ($i =0; $i < 1000; $i++) {
             $article = new Article();
             $article->setTitle(mb_strtolower($faker->sentence()));
             $article->setContent(mb_strtolower($faker->text()));
@@ -36,6 +36,6 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         }
 
 
-        $manager->flush();
+        $manager->flush();*/
     }
 }

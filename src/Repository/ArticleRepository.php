@@ -21,11 +21,12 @@ class ArticleRepository extends ServiceEntityRepository
 
     public function findAllWithCategories()
     {
-        $qb = $this->createQueryBuilder('a')
+        return $this->createQueryBuilder('a')
             ->innerJoin('a.category', 'c' )
             ->addSelect('c')
-            ->getQuery();
-
-        return $qb->execute();
+            ->leftJoin('a.tags', 't')
+            ->addSelect("t")
+            ->getQuery()
+            ->getResult();
     }
 }

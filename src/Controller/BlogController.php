@@ -21,7 +21,7 @@ class BlogController extends AbstractController
      */
     public function index(ArticleRepository $repo)
     {
-        $articles = $repo->findAll();
+        $articles = $repo->findAllWithCategories();
 
         if (!$articles) {
             throw $this->createNotFoundException(

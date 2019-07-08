@@ -19,7 +19,6 @@
             </tr>
         </thead>
         <tbody>
-        {% if is_granted('ROLE_ADMIN') %}
             {% for article in articles %}
                 <tr>
                     <td>{{ article.id }}</td>
@@ -33,21 +32,6 @@
                     </td>
                 </tr>
             {% endfor %}
-        {% else %}
-            {% for article in app.user.articles %}
-                <tr>
-                    <td>{{ article.id }}</td>
-                    <td>{{ article.title }}</td>
-                    <td>{{ article.content }}</td>
-                    <td>
-                        <a href="{{ path('article_show', {'slug': article.slug}) }}">show</a>
-                        {% if is_granted('ROLE_AUTHOR') %}
-                            <a href="{{ path('article_edit', { 'id': article.id} ) }}">Éditer</a>
-                        {%endif%}
-                    </td>
-                </tr>
-            {% endfor %}
-        {% endif %}
         </tbody>
     </table>
 {% endblock %}
